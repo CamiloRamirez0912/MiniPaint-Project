@@ -30,7 +30,7 @@ public class Window extends JFrame {
         this.add(drawingBoard, gbc);
         menuOptions = new MenuOptions();
         gbc.gridy = 1; // Fila 1
-        gbc.weighty = 0.1;
+        gbc.weighty = 0.01;
         this.add(bottomPanel, gbc);
         setJMenuBar(menuOptions);
 
