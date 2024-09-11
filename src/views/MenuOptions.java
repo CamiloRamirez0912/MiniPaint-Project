@@ -6,13 +6,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class MenuOptions extends JMenuBar{
+public class MenuOptions extends JMenuBar {
     private JMenu menuSettings;
     private JMenu menuTools;
     private JButton buttonAbout;
     private Font font;
-    
-    public MenuOptions(){
+
+    public MenuOptions() {
         menuSettings = new JMenu("Configuración");
         menuTools = new JMenu("Herramientas");
         buttonAbout = new JButton("AAcerca de");
@@ -25,10 +25,22 @@ public class MenuOptions extends JMenuBar{
         setButtonAbout();
     }
 
-    private void setMenuSettings(){
+    private void setMenuSettings() {
         JMenuItem color = new JMenuItem("Color");
         JMenuItem clean = new JMenuItem("Limpiar");
         JMenuItem exit = new JMenuItem("Salir");
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int answer = JOptionPane.showConfirmDialog(null, "¿Está seguro de salir?", "Cerrar MiniPaint",
+                        JOptionPane.YES_NO_OPTION);
+                if (answer == 0) {
+                    System.exit(0);
+                }
+            }
+        });
+
         menuSettings.setFont(font);
         menuSettings.add(color);
         menuSettings.add(clean);
@@ -36,17 +48,16 @@ public class MenuOptions extends JMenuBar{
         this.add(menuSettings);
     }
 
-    private void setMenuTools(){
-        JMenuItem color = new JMenuItem("Linea");
-        JMenuItem clean = new JMenuItem("Circulo");
-        JMenuItem exit = new JMenuItem("Rectangulo");
+    private void setMenuTools() {
+        JMenuItem line = new JMenuItem("Linea");
+        JMenuItem circle = new JMenuItem("Circulo");
+        JMenuItem rectangle = new JMenuItem("Rectangulo");
         menuTools.setFont(font);
-        menuTools.add(color);
-        menuTools.add(clean);
-        menuTools.add(exit);
+        menuTools.add(line);
+        menuTools.add(circle);
+        menuTools.add(rectangle);
         this.add(menuTools);
     }
-
 
     private void setButtonAbout() {
         // Crear un JButton en lugar de JMenu
@@ -62,13 +73,13 @@ public class MenuOptions extends JMenuBar{
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Acción a ejecutar cuando se hace clic en el JButton
-                JOptionPane.showMessageDialog(null, "MINIPAINT\n 1\n Taller 1 Programación II\n Diego && Camilo \n 10/09/2024");
+                JOptionPane.showMessageDialog(null,
+                        "MINIPAINT\n 1\n Taller 1 Programación II\n Diego && Camilo \n 10/09/2024");
             }
         });
 
         // Agregar el JButton al JMenuBar
         this.add(buttonAbout);
     }
-
 
 }
