@@ -29,6 +29,19 @@ public class MenuOptions extends JMenuBar{
         JMenuItem color = new JMenuItem("Color");
         JMenuItem clean = new JMenuItem("Limpiar");
         JMenuItem exit = new JMenuItem("Salir");
+
+
+        exit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               int answer = JOptionPane.showConfirmDialog(null, "¿Está seguro de salir?", "Cerrar MiniPaint", JOptionPane.YES_NO_OPTION);
+               if (answer == 0) {
+                System.exit(0);
+               }
+            }
+        });
+
+
         menuSettings.setFont(font);
         menuSettings.add(color);
         menuSettings.add(clean);
@@ -37,13 +50,13 @@ public class MenuOptions extends JMenuBar{
     }
 
     private void setMenuTools(){
-        JMenuItem color = new JMenuItem("Linea");
-        JMenuItem clean = new JMenuItem("Circulo");
-        JMenuItem exit = new JMenuItem("Rectangulo");
+        JMenuItem line = new JMenuItem("Linea");
+        JMenuItem circle = new JMenuItem("Circulo");
+        JMenuItem rectangle = new JMenuItem("Rectangulo");
         menuTools.setFont(font);
-        menuTools.add(color);
-        menuTools.add(clean);
-        menuTools.add(exit);
+        menuTools.add(line);
+        menuTools.add(circle);
+        menuTools.add(rectangle);
         this.add(menuTools);
     }
 
