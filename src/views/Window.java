@@ -8,7 +8,6 @@ public class Window extends JFrame{
 
     private MenuOptions menuOptions ;
     private DrawingBoard drawingBoard;
-    private Footer footer;
     private String actualTool;
     private BottomPanel bottomPanel = new BottomPanel();
     GridBagConstraints gbc;
@@ -32,10 +31,9 @@ public class Window extends JFrame{
 
         this.add(drawingBoard,gbc);
         menuOptions = new MenuOptions();
-        footer = new Footer();
 
         gbc.gridy = 1;         // Fila 1
-        gbc.weighty = 0.1;  
+        gbc.weighty = 0.02;  
 
         this.add(bottomPanel, gbc);
         setJMenuBar(menuOptions);
