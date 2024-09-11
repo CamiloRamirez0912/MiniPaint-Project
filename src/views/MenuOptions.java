@@ -9,14 +9,14 @@ import javax.swing.*;
 public class MenuOptions extends JMenuBar{
     private JMenu menuSettings;
     private JMenu menuTools;
-    private JMenu menuAbout;
     private JButton buttonAbout;
+    private Font font;
     
     public MenuOptions(){
         menuSettings = new JMenu("Configuración");
         menuTools = new JMenu("Herramientas");
-        menuAbout = new JMenu("Acerca de");
         buttonAbout = new JButton("AAcerca de");
+        font = new Font("Arial", Font.BOLD, 16);
         this.setPreferredSize(new Dimension(this.getWidth(), 50));
         this.setBorder(BorderFactory.createEmptyBorder());
         this.setBackground(new Color(0xE1F0FA));
@@ -29,6 +29,7 @@ public class MenuOptions extends JMenuBar{
         JMenuItem color = new JMenuItem("Color");
         JMenuItem clean = new JMenuItem("Limpiar");
         JMenuItem exit = new JMenuItem("Salir");
+        menuSettings.setFont(font);
         menuSettings.add(color);
         menuSettings.add(clean);
         menuSettings.add(exit);
@@ -39,6 +40,7 @@ public class MenuOptions extends JMenuBar{
         JMenuItem color = new JMenuItem("Linea");
         JMenuItem clean = new JMenuItem("Circulo");
         JMenuItem exit = new JMenuItem("Rectangulo");
+        menuTools.setFont(font);
         menuTools.add(color);
         menuTools.add(clean);
         menuTools.add(exit);
@@ -49,6 +51,7 @@ public class MenuOptions extends JMenuBar{
     private void setButtonAbout() {
         // Crear un JButton en lugar de JMenu
         buttonAbout = new JButton("Acerca de");
+        buttonAbout.setFont(font);
 
         buttonAbout.setBorderPainted(false);
 
