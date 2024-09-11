@@ -29,8 +29,13 @@ public class Window extends JFrame {
 
         this.add(drawingBoard, gbc);
         menuOptions = new MenuOptions();
+<<<<<<< HEAD
         gbc.gridy = 1; // Fila 1
         gbc.weighty = 0.01;
+=======
+        gbc.gridy = 1;         // Fila 1
+        gbc.weighty = 0.01;  
+>>>>>>> Diego
         this.add(bottomPanel, gbc);
         setJMenuBar(menuOptions);
 
