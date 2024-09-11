@@ -22,3 +22,14 @@ The `JAVA PROJECTS` view allows you to manage your dependencies. More details ca
 ## Menu de Herramientas
 
 El menu de herramientas estara en la clase MenuOptions en la carpeta views es de tipo JMenuBar
+
+
+echo "# MiniPaint-Project" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/CamiloRamirez0912/MiniPaint-Project.git
+git push -u origin main
+
+git push origin Diego
