@@ -16,6 +16,8 @@ public class Window extends JFrame {
     private String stateMenuTools;
     private JMenuItem changeMenuItem;
     private JButton changeMenuButton;
+    private JButton changeSideButton;
+    private String menuSide = "Left";
     
 
     public Window() {
@@ -24,15 +26,17 @@ public class Window extends JFrame {
         setLayout(new GridBagLayout());
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         getContentPane().setBackground(Color.CYAN);
-        changeMenuItem = new JMenuItem("Cambiar Menu");
-        changeMenuButton = new JButton("Cambiar Menu Bu");
+        changeMenuItem = new JMenuItem("Cambiar Menu Vertical");
+        changeMenuButton = new JButton("Cambiar Menu Vertical");
+        changeSideButton = new JButton("Cambiar de Lado");
         eventChangeMenu();
         menuOptions = new MenuOptions(changeMenuItem);
         gbc = new GridBagConstraints();
-        setMenuLeft();
+        setMenuSide();
+        eventChangeVertical();
+        eventChangeSide();
        
     }
-
 
     public void setMenuTop() {
         gbc.gridx = 0; // Columna 0
@@ -45,11 +49,46 @@ public class Window extends JFrame {
         this.add(drawingBoard, gbc);
     }
 
-    public void setMenuLeft() {
+
+    private void setMenuSide(){
         verticalMenu = new VerticalMenu();
-        eventChangeVertical();
+        changeSideButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, changeSideButton.getMinimumSize().height));
+        changeSideButton.setFont(new Font("Arial", Font.PLAIN, 14));
+        
+        changeMenuButton.setMaximumSize(new Dimension(Integer.MAX_VALUE, changeMenuButton.getMinimumSize().height));
+        changeMenuButton.setFont(new Font("Arial", Font.PLAIN, 14));
         verticalMenu.add(changeMenuButton);
+        verticalMenu.add(changeSideButton);
+        if (menuSide.equals("Right")) {
+            positionLayoutRight();
+        }else{
+            positionLayoutLeft();
+        }
+        this.add(drawingBoard, gbc);
+        setBottomPanelHorizontal();
+    }
+
+    private void positionLayoutLeft(){
         gbc.gridx = 0; // Columna 0 (izquierda)
+        gbc.gridy = 0; // Fila 0
+        gbc.gridwidth = 1; // Ocupa 1 columna
+        gbc.gridheight = 1; // Ocupa 1 fila (todo el alto)
+        gbc.weightx = 0.2; // Ocupa el 20% del ancho
+        gbc.weighty = 0.9; // Ocupa el 100% del alto
+        gbc.fill = GridBagConstraints.BOTH;
+        this.add(verticalMenu, gbc);
+
+        gbc.gridx = 1; // Columna 1 (a la derecha del menú)
+        gbc.gridy = 0; // Fila 0 (misma fila que el menú)
+        gbc.gridwidth = 1; // Ocupa 1 columna
+        gbc.gridheight = 1; // Ocupa 1 fila (todo el alto)
+        gbc.weightx = 0.8; // Ocupa el 80% del ancho
+        gbc.weighty = 0.9; // Ocupa el 100% del alto
+        gbc.fill = GridBagConstraints.BOTH;
+    }
+
+    private void positionLayoutRight(){
+        gbc.gridx = 1; // Columna 1 (derecha)
         gbc.gridy = 0; // Fila 0
         gbc.gridwidth = 1; // Ocupa 1 columna
         gbc.gridheight = 1; // Ocupa 1 fila (todo el alto)
@@ -58,19 +97,16 @@ public class Window extends JFrame {
         gbc.fill = GridBagConstraints.BOTH; // Se expande tanto en ancho como en alto
         this.add(verticalMenu, gbc);
 
-        // Configuración del DrawingBoard (ocupa el 80% del ancho)
-        gbc.gridx = 1; // Columna 1 (a la derecha del menú)
+        gbc.gridx = 0; // Columna 1 (a la izquierda del menú)
         gbc.gridy = 0; // Fila 0 (misma fila que el menú)
         gbc.gridwidth = 1; // Ocupa 1 columna
         gbc.gridheight = 1; // Ocupa 1 fila (todo el alto)
         gbc.weightx = 0.8; // Ocupa el 80% del ancho
         gbc.weighty = 0.9; // Ocupa el 100% del alto
-        gbc.fill = GridBagConstraints.BOTH; // Se expande tanto en ancho como en alto
-        this.add(drawingBoard, gbc);
-        setBottomPanelHorizontal();
+        gbc.fill = GridBagConstraints.BOTH;
     }
 
-    public void setBottomPanel() {
+    private void setBottomPanel() {
         gbc.gridy = 1;
         gbc.gridx = 0;
         gbc.weighty = 0.01;
@@ -94,22 +130,23 @@ public class Window extends JFrame {
         changeMenuItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (stateMenuTools.equals("Top")) {
-                   
-                    setJMenuBar(null);
-                    setMenuLeft();
-                    setBottomPanelHorizontal();
-                    stateMenuTools = "Left";
-                    
-                }else{
-                    if (stateMenuTools.equals("Left")) {
-                        setBottomPanel();
-                        setJMenuBar(menuOptions);
-                        stateMenuTools = "Top";
-                       
-                        setMenuTop();
-                        remove(verticalMenu);
-                    }
+                eventChangeMenuPosition();
+            }
+        });
+    }
+
+    private void eventChangeSide() {
+        changeSideButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (menuSide.equals("Left")) {
+                    remove(verticalMenu);
+                    menuSide = "Right"; 
+                    setMenuSide();
+                } else {
+                    remove(verticalMenu);
+                    menuSide = "Left"; 
+                    setMenuSide();
                 }
                 revalidate();
                 repaint();
@@ -121,26 +158,29 @@ public class Window extends JFrame {
         changeMenuButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (stateMenuTools.equals("Top")) {
-                  
-                    setJMenuBar(null);
-                    setMenuLeft();
-                    setBottomPanelHorizontal();
-                    stateMenuTools = "Left";
-                    
-                }else{
-                    if (stateMenuTools.equals("Left")) {
-                        setBottomPanel();
-                        setJMenuBar(menuOptions);
-                        stateMenuTools = "Top";
-                        
-                        setMenuTop();
-                        remove(verticalMenu);
-                    }
-                }
-                revalidate();
-                repaint();
+                eventChangeMenuPosition();
             }
         });
+    }
+
+    private void eventChangeMenuPosition(){
+        if (stateMenuTools.equals("Top")) {
+                   
+            setJMenuBar(null);
+            setMenuSide();
+            setBottomPanelHorizontal();
+            stateMenuTools = "Left";
+            
+        }else{
+            if (stateMenuTools.equals("Left") || stateMenuTools.equals("Right")) {
+                setBottomPanel();
+                setJMenuBar(menuOptions);
+                stateMenuTools = "Top";
+                setMenuTop();
+                remove(verticalMenu);
+            }
+        }
+        revalidate();
+        repaint();
     }
 }

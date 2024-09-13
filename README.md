@@ -20,6 +20,7 @@ Nuestro proyecto MiniPaint utiliza la siguiente paleta de colores:
 - Gris Claro: `#CED4DA` (Borde en el panel inferior)
 
 ## Especificaciones de Fuente
+- Arial, tamaño 16, bold
 
 ### Para Encabezados:
 - **Familia de Fuente:** Arial  
@@ -44,18 +45,22 @@ El proyecto MiniPaint consta de los siguientes componentes principales:
 - **MenuOptions:** La barra de menú superior con opciones de configuración.
 - **DrawingBoard:** El lienzo central donde se realizan los dibujos.
 - **BottomPanel:** Muestra el color actual y el conteo de elementos.
-- **Footer:** Panel de información adicional en la parte inferior.
+- **VerticalMenuPanel:** Menú vertical en la parte izquierda de la pantalla con submenús de configuración y herramientas.
 
 ## Cómo Ejecutar
 Para poder Ejecutar la aplicación se debe abrir el archivo *paint-project.jar* 
 ubicado en la carpeta  `paint-project/executable/paint-project.jar` 
+También se puede ejecutar con el siguiente comando: ```java -jar paint-project.jar```
 
 ## Versión Mínima
 java 21.0.4 2024-07-16 LTS
+
+### Resumen de los cambios:  
+**Actualización de versión**: Se cambió el menú horizontal de la parte superior a un menú vertical ubicado en la parte izquierda de la pantalla, se agrego un boton para cambiar la posición del menu de izquierda a derecha y viceversa.
 
 ## Colaboradores
 
 - Diego Armando Sánchez Munévar 202322204
 - Camilo Ramirez 202214307
 
-**Última Actualización:** 11/09/2024
+**Última Actualización:** 13/09/2024
