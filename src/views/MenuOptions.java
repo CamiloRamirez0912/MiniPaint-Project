@@ -15,7 +15,7 @@ public class MenuOptions extends JMenuBar {
     public MenuOptions() {
         menuSettings = new JMenu("Configuración");
         menuTools = new JMenu("Herramientas");
-        buttonAbout = new JButton("AAcerca de");
+        buttonAbout = new JButton("Acerca de");
         font = new Font("Arial", Font.BOLD, 16);
         this.setPreferredSize(new Dimension(this.getWidth(), 50));
         this.setBorder(BorderFactory.createEmptyBorder());
