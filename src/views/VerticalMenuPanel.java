@@ -6,6 +6,7 @@ import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class VerticalMenuPanel extends JPanel {
+    private JButton buttonChange;
     private JButton buttonSettings;
     private JButton buttonTools;
     private JButton buttonAbout;
@@ -25,6 +26,7 @@ public class VerticalMenuPanel extends JPanel {
     }
 
     private void createButtons() {
+        buttonChange = createMenuButton("Cambiar lado");
         buttonSettings = createMenuButton("Configuración");
         buttonTools = createMenuButton("Herramientas");
         buttonAbout = createMenuButton("Acerca de");
@@ -75,6 +77,7 @@ public class VerticalMenuPanel extends JPanel {
     
 
     private void addComponents() {
+        add(buttonChange);
         add(buttonSettings);
         add(subMenuSettings);
         add(buttonTools);
