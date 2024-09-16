@@ -39,7 +39,7 @@ public class DrawingBoard extends JPanel {
         }
     }
 
-    private void createGroupPoints(){
+    private void createGroupPoints() {
         addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
                 // Crear un nuevo grupo de puntos al presionar el mouse
@@ -51,7 +51,7 @@ public class DrawingBoard extends JPanel {
         });
     }
 
-    private void paintEvent(){
+    private void paintEvent() {
         addMouseMotionListener(new MouseMotionAdapter() {
             public void mouseDragged(MouseEvent e) {
                 // Agregar puntos al grupo actual mientras se arrastra el mouse
@@ -61,10 +61,9 @@ public class DrawingBoard extends JPanel {
         });
     }
 
-    private void addEvents(){
+    private void addEvents() {
         createGroupPoints();
         paintEvent();
     }
 
 }
-

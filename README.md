@@ -56,7 +56,7 @@ También se puede ejecutar con el siguiente comando: ```java -jar paint-project.
 java 21.0.4 2024-07-16 LTS
 
 ### Resumen de los cambios:  
-**Actualización de versión**: Se cambió el menú horizontal de la parte superior a un menú vertical ubicado en la parte izquierda de la pantalla.
+**Actualización de versión**: Se cambió el menú horizontal de la parte superior a un menú vertical ubicado en la parte izquierda de la pantalla, se agrego un boton para cambiar la posición del menu de izquierda a derecha y viceversa.
 
 ## Colaboradores
 

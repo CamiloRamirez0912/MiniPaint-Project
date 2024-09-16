@@ -14,16 +14,16 @@ public class BottomPanel extends JPanel {
 
         customFont = new Font("Arial", Font.BOLD, 16);
 
-        colorLabel = new JLabel("Color: Black", SwingConstants.CENTER);
+        colorLabel = new JLabel("Color: Black");
         colorLabel.setFont(customFont);
-        elementsLabel = new JLabel("Cantidad Elementos: 0", SwingConstants.CENTER);
+        elementsLabel = new JLabel("Cantidad Elementos: 0");
         elementsLabel.setFont(customFont);
 
-        JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JPanel leftPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         leftPanel.setBackground(new Color(0xE1F0FA));
         leftPanel.add(colorLabel);
 
-        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        JPanel rightPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         rightPanel.setBackground(new Color(0xE1F0FA));
         rightPanel.add(elementsLabel);
 

@@ -10,12 +10,14 @@ public class MenuOptions extends JMenuBar {
     private JMenu menuSettings;
     private JMenu menuTools;
     private JButton buttonAbout;
+    private JMenuItem changeItemMenu;
     private Font font;
 
-    public MenuOptions() {
+    public MenuOptions(JMenuItem changeButtonMenu) {
+        changeItemMenu = changeButtonMenu;
         menuSettings = new JMenu("Configuración");
         menuTools = new JMenu("Herramientas");
-        buttonAbout = new JButton("Acerca de");
+        buttonAbout = new JButton("AAcerca de");
         font = new Font("Arial", Font.BOLD, 16);
         this.setPreferredSize(new Dimension(this.getWidth(), 50));
         this.setBorder(BorderFactory.createEmptyBorder());
@@ -44,6 +46,7 @@ public class MenuOptions extends JMenuBar {
         menuSettings.setFont(font);
         menuSettings.add(color);
         menuSettings.add(clean);
+        menuSettings.add(changeItemMenu);
         menuSettings.add(exit);
         this.add(menuSettings);
     }

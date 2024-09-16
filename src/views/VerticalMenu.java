@@ -5,7 +5,7 @@ import javax.swing.border.LineBorder;
 
 import java.awt.*;
 
-public class VerticalMenuPanel extends JPanel {
+public class VerticalMenu extends JPanel {
     private JButton buttonSettings;
     private JButton buttonTools;
     private JButton buttonAbout;
@@ -13,7 +13,7 @@ public class VerticalMenuPanel extends JPanel {
     private JPanel subMenuTools;
     private Font font;
 
-    public VerticalMenuPanel() {
+    public VerticalMenu() {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(0xE1F0FA));
         setPreferredSize(new Dimension(150, getHeight()));
@@ -55,7 +55,7 @@ public class VerticalMenuPanel extends JPanel {
 
         for (String item : items) {
             JButton subButton = createMenuButton(item);
-            subButton.setFont(new Font("Arial", Font.PLAIN, 14));
+            subButton.setFont(new Font("Arial", Font.BOLD, 14));
             subMenu.add(subButton);
 
             if ("Salir".equals(item)) {
@@ -72,15 +72,12 @@ public class VerticalMenuPanel extends JPanel {
         return subMenu;
     }
 
-    
-
     private void addComponents() {
         add(buttonSettings);
         add(subMenuSettings);
         add(buttonTools);
         add(subMenuTools);
         add(buttonAbout);
-
         buttonSettings.addActionListener(e -> toggleSubMenu(subMenuSettings));
         buttonTools.addActionListener(e -> toggleSubMenu(subMenuTools));
         buttonAbout.addActionListener(e -> JOptionPane.showMessageDialog(null,
